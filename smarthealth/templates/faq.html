@@ -1,0 +1,739 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>BK Smart Health F.A.Q</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+  <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/quill/quill.snow.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/quill/quill.bubble.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/remixicon/remixicon.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/simple-datatables/style.css' %}" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center">
+        <img src="assets/img/logo.png" alt="">
+        <span class="d-none d-lg-block">BK Smart Health</span>
+      </a>
+      <i class="bi bi-list toggle-sidebar-btn"></i>
+    </div><!-- End Logo -->
+
+    <div class="search-bar">
+      <form class="search-form d-flex align-items-center" method="POST" action="#">
+        <input type="text" name="query" placeholder="Search" title="Enter search keyword">
+        <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+      </form>
+    </div><!-- End Search Bar -->
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+        <li class="nav-item d-block d-lg-none">
+          <a class="nav-link nav-icon search-bar-toggle " href="#">
+            <i class="bi bi-search"></i>
+          </a>
+        </li><!-- End Search Icon-->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-bell"></i>
+            <span class="badge bg-primary badge-number">4</span>
+          </a><!-- End Notification Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+            <li class="dropdown-header">
+              You have 4 new notifications
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-exclamation-circle text-warning"></i>
+              <div>
+                <h4>Lorem Ipsum</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>30 min. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-x-circle text-danger"></i>
+              <div>
+                <h4>Atque rerum nesciunt</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>1 hr. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-check-circle text-success"></i>
+              <div>
+                <h4>Sit rerum fuga</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>2 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="notification-item">
+              <i class="bi bi-info-circle text-primary"></i>
+              <div>
+                <h4>Dicta reprehenderit</h4>
+                <p>Quae dolorem earum veritatis oditseno</p>
+                <p>4 hrs. ago</p>
+              </div>
+            </li>
+
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li class="dropdown-footer">
+              <a href="#">Show all notifications</a>
+            </li>
+
+          </ul><!-- End Notification Dropdown Items -->
+
+        </li><!-- End Notification Nav -->
+
+        <li class="nav-item dropdown">
+
+          <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <i class="bi bi-chat-left-text"></i>
+            <span class="badge bg-success badge-number">3</span>
+          </a><!-- End Messages Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+            <li class="dropdown-header">
+              You have 3 new messages
+              <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-1.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Maria Hudson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>4 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-2.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>Anna Nelson</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>6 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="message-item">
+              <a href="#">
+                <img src="assets/img/messages-3.jpg" alt="" class="rounded-circle">
+                <div>
+                  <h4>David Muldon</h4>
+                  <p>Velit asperiores et ducimus soluta repudiandae labore officia est ut...</p>
+                  <p>8 hrs. ago</p>
+                </div>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li class="dropdown-footer">
+              <a href="#">Show all messages</a>
+            </li>
+
+          </ul><!-- End Messages Dropdown Items -->
+
+        </li><!-- End Messages Nav -->
+
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{user.first_name}} {{user.last_name}}</span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>{{user.first_name}} {{user.last_name}}</h6>
+              <span>Web Designer</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>My Profile</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-gear"></i>
+                <span>Account Settings</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                <i class="bi bi-question-circle"></i>
+                <span>Need Help?</span>
+              </a>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Sign Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
+
+  <!-- ======= Sidebar ======= -->
+  <aside id="sidebar" class="sidebar">
+
+    <ul class="sidebar-nav" id="sidebar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link " href="index.html">
+          <i class="bi bi-grid"></i>
+          <span>Smart Health Check</span>
+        </a>
+      </li><!-- End Dashboard Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="lung">
+          <i class="bi bi-lungs-fill"></i><span>Spirometry</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          </li>
+         
+          <li>
+            <a class="nav-link collapsed" href="spirometry_data">
+              <i class="bi bi-circle"></i><span>FVE/FVC generator</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link collapsed" href="lung">
+              <i class="bi bi-circle"></i><span>Lung_Smart Analysis</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Components Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="ecg">
+          <i class="bi bi-heart-pulse"></i><span>ECG</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a class="nav-link collapsed" href="ecg">
+              <i class="bi bi-circle"></i><span>ECG status</span>
+            </a>
+          </li>
+          <li>
+            <a class="nav-link collapsed" href="ecg">
+              <i class="bi bi-circle"></i><span>ECG_Smart Analysis</span>
+            </a>
+          </li>
+          
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#tables-nav" data-bs-toggle="collapse" href="read">
+          <i class="bi bi-heart-pulse-fill"></i><span>Vital Readings</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="tables-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a class="nav-link collapsed"href="read">
+              <i class="bi bi-circle"></i><span>Vital Reading Report </span>
+            </a>
+          </li>
+         
+        </ul>
+      </li><!-- End Tables Nav -->
+
+      
+         
+        
+      </li><!-- End Charts Nav -->
+
+     
+      </li><!-- End Icons Nav -->
+
+      <li class="nav-heading">Ehealth </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="doctors.html">
+          <i class="bi bi-person"></i>
+          <span>Doctors on Consultation</span>
+        </a>
+      </li><!-- End Profile Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="faq">
+          <i class="bi bi-question-circle"></i>
+          <span>F.A.Q</span>
+        </a>
+      </li><!-- End F.A.Q Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="home">
+          <i class="bi bi-envelope"></i>
+          <span>Contact</span>
+        </a>
+      </li><!-- End Contact Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="register">
+          <i class="bi bi-card-list"></i>
+          <span>Register</span>
+        </a>
+      </li><!-- End Register Page Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="index">
+          <i class="bi bi-box-arrow-in-right"></i>
+          <span>Login</span>
+        </a>
+      </li><!-- End Login Page Nav -->
+
+      
+    </ul>
+
+  </aside><!-- End Sidebar-->
+
+ 
+
+  <main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Frequently Asked Questions</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="home">Home</a></li>
+          <li class="breadcrumb-item">FAQ</li>
+          <li class="breadcrumb-item active">Frequently Asked Questions</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section faq">
+      <div class="row">
+        <div class="col-lg-6">
+
+          <div class="card basic">
+            <div class="card-body">
+              <h5 class="card-title">Basic health Questions</h5>
+
+              <div>
+                <h6>1. What is an ECG</h6>
+                <p>An electrocardiogram records the electrical signals in the heart. is a painless, noninvasive way to help diagnose many common heart problems. A  test used to quickly detect heart problems and monitor the heart's health.</p>
+              </div>
+
+              <div class="pt-2">
+                <h6>2.what is spirometry</h6>
+                <p>A method for assessing the lung condition</p>
+              </div>
+
+              <div class="pt-2">
+                <h6>3. Wat is BPM</h6>
+                <p>When your heart beats it pushes blood around your body. This heartbeat can be felt as your 'pulse' on your wrist or neck<br>
+                 
+                  Your pulse is measured by counting the number of times your heart beats in one minute. For example, if your heart contracts 72 times in one minute, your pulse would be 72 beats per minute (BPM). This is also called your heart rate.<br>
+                  
+                  A normal pulse beats in a steady, regular rhythm. However, in some people this rhythm is uneven, or 'jumps about'. This is known as an irregular pulse.</p>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- F.A.Q Group 1 -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Spirometry/ lung Capacity Questions</h5>
+
+              <div class="accordion accordion-flush" id="faq-group-1">
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse">
+                     What is FEV1
+                    </button>
+                  </h2>
+                  <div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                    <div class="accordion-body">
+                      <span style="color:blue">FEV1 =</span>  volume expelled in the first second of forced expiration (calculated as % of predicted value)<br>
+                      <span style="color:blue"> Physiology:</span>FEV1 is reduced in obstructive disorders because there is airway resistance to expiratory flow. It is also reduced in restrictive disorders because there is decreased compliance and elasticity, so the lungs cannot force air out quickly.<br>
+                      <span style="color:blue"> Results:</span><br>
+                      <span style="color:purple"> FEV1 :</span>     FEV1 <80% predicted = lung disease.
+                      <span style="color:purple">FEV1 </span>>80% predicted = normal = no lung disease (breathlessness due to another cause, e.g. PE, vasculitis)<br>
+                      <span style="color:purple">Other points: </span> FEV1 is also used to grade severity of COPD into mild (≥80%), moderate (50-80%), severe (30-50%), or very severe (<30%). Asthma is not usually diagnosed with spirometry (as tests are often normal when the patient is asymptomatic). However, reversibility of >12% of FEV1 with a bronchodilator may suggest the diagnosis. Asthma is usually diagnosed clinically or with serial peak flow demonstrating >20% diurnal variation.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-2" type="button" data-bs-toggle="collapse">
+                     FVC?
+                    </button>
+                  </h2>
+                  <div id="faqsOne-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                    <div class="accordion-body">
+                      FVC = total volume expelled without time limit from maximal inspiration to forced maximal expiration (calculated as % of predicted value)<br>
+Physiology: FVC is reduced in restrictive disorders because there is reduced lung expansion, so the volume the lungs can hold is smaller. In obstructive disorders, there is airway resistance to expiratory flow, but a normal volume of air in the lungs, so the FVC is normal.<br>
+Results: FVC <80% predicted = restrictive disorder (FVC is normal in obstructive disorders) 
+Other points: VC = non-forced total volume expelled without time limit from maximal inspiration to maximal expiration (calculated as % of predicted value). The value will be similar to the FVC, which is more commonly used. 
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-3" type="button" data-bs-toggle="collapse">
+                      FEV1/FVC?
+                    </button>
+                  </h2>
+                  <div id="faqsOne-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                    <div class="accordion-body">
+                      FEV1/FVC ratio = proportional volume breathed out in first second compared to the whole breath (normally 0.7-0.8)<br>
+Physiology: This is calculated by dividing the FEV1 value by the FVC value. It is low in obstructive disorders because the FEV1 is low and the FVC is normal (as above). It is normal or high in restrictive disorders because the FEV1 is low and the FVC is proportionally as low or lower.<br>
+Results<br>
+FEV1/FVC ratio <0.7 = obstructive 
+FEV1/FVC ratio 0.7-0.8 = normal or restrictive
+FEV1/FVC ratio >0.8 = restrictive (if FVC more affected than FEV1)<br>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-4" type="button" data-bs-toggle="collapse">
+                      Basic Interpretation of Values
+                    </button>
+                  </h2>
+                  <div id="faqsOne-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                    <div class="accordion-body">
+                      Obstructive  	Restrictive<br>
+                      FEV1	↓(<80%)<	 ↓(<80%)  <br>
+                      FVC	N(>80%)	    ↓(<80%)<br>
+                      FEV1/FVC ratio	↓(<0.7)	N or ↑(0.7-0.8)  (>0.8)  <br>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-5" type="button" data-bs-toggle="collapse">
+                      How to calculate FEV1/FEV6 and FEV1/FVC ?
+                    </button>
+                  </h2>
+                  <div id="faqsOne-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                    <div class="accordion-body">
+                      
+                      Calculate % of predicted values =
+                      % predicted = (best patient reading / predicted value) x 100<br>
+                      Calculate the FEV1/FVC ratio: =
+                      FEV1/FVC ratio = Best FEV1 reading / Best FVC reading<br>
+                      FEV1= volume expelled in the first second of forced expiration (calculated as % of predicted value)<br>
+                      FVC=  total volume expelled without time limit from maximal inspiration to forced maximal expiration (calculated as % of predicted value)<br>
+                      FEV6 =the amount of air you exhaled during the whole six-second spirometry test.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div><!-- End F.A.Q Group 1 -->
+
+        </div>
+
+        <div class="col-lg-6">
+
+          <!-- F.A.Q Group 2 -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">ECG/Arrythmia Questions</h5>
+
+              <div class="accordion accordion-flush" id="faq-group-2">
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
+                      What is Angina?
+                    </button>
+                  </h2>
+                  <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                    <div class="accordion-body">
+                      Ut quasi odit odio totam accusamus vero eius. Nostrum asperiores voluptatem eos nulla ab dolores est asperiores iure. Quo est quis praesentium aut maiores. Corrupti sed aut expedita fugit vero dolorem. Nemo rerum sapiente. A quaerat dignissimos.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsTwo-2" type="button" data-bs-toggle="collapse">
+                      What is Thal
+                    </button>
+                  </h2>
+                  <div id="faqsTwo-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                    <div class="accordion-body">
+                      In minus quia impedit est quas deserunt deserunt et. Nulla non quo dolores minima fugiat aut saepe aut inventore. Qui nesciunt odio officia beatae iusto sed voluptatem possimus quas. Officia vitae sit voluptatem nostrum a.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsTwo-3" type="button" data-bs-toggle="collapse">
+                      Minus aliquam modi id reprehenderit nihil?
+                    </button>
+                  </h2>
+                  <div id="faqsTwo-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                    <div class="accordion-body">
+                      Voluptates magni amet enim perspiciatis atque excepturi itaque est. Sit beatae animi incidunt eum repellat sequi ea saepe inventore. Id et vel et et. Nesciunt itaque corrupti quia ducimus. Consequatur maiores voluptatum fuga quod ut non fuga.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsTwo-4" type="button" data-bs-toggle="collapse">
+                      Quaerat qui est iusto asperiores qui est reiciendis eos et?
+                    </button>
+                  </h2>
+                  <div id="faqsTwo-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                    <div class="accordion-body">
+                      Numquam ut reiciendis aliquid. Quia veritatis quasi ipsam sed quo ut eligendi et non. Doloremque sed voluptatem at in voluptas aliquid dolorum.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsTwo-5" type="button" data-bs-toggle="collapse">
+                      Laboriosam asperiores eum?
+                    </button>
+                  </h2>
+                  <div id="faqsTwo-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                    <div class="accordion-body">
+                      Aut necessitatibus maxime quis dolor et. Nihil laboriosam molestiae qui molestias placeat corrupti non quo accusamus. Nemo qui quis harum enim sed. Aliquam molestias pariatur delectus voluptas quidem qui rerum id quisquam. Perspiciatis voluptatem voluptatem eos. Vel aut minus labore at rerum eos.
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div><!-- End F.A.Q Group 2 -->
+
+          <!-- F.A.Q Group 3 -->
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">BPM Questions</h5>
+
+              <div class="accordion accordion-flush" id="faq-group-3">
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-1" type="button" data-bs-toggle="collapse">
+                      What is an irregular pulse?
+                    </button>
+                  </h2>
+                  <div id="faqsThree-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+                    <div class="accordion-body">
+                      An irregular pulse is when the heart doesn't beat in a regular, steady rhythm. This is also called an irregular heart rate or an arrhythmia.<br>
+
+If your heart rate is irregular, you may notice that your pulse:<br>
+
+seems irregular or is 'jumping around<br>
+is racing, even when you're at rest<br>
+seems unusually slow some or most of the time<br>
+seems to pause, add, or miss a beat.<br>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-2" type="button" data-bs-toggle="collapse">
+                      What are heart palpitations?
+                    </button>
+                  </h2>
+                  <div id="faqsThree-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+                    <div class="accordion-body">
+                      A heart palpitation is when you suddenly become aware of your heart beating, usually in an irregular way. Sometimes you can feel it in your ears, neck or chest when you’re lying down. Your heart beat may feel:<br>
+
+too fast or slow<br>
+like it’s fluttering<br>
+like it’s thudding, or pounding.<br>
+It is not unusual to feel heart palpitations occasionally and mostly they are harmless. However if you’re experiencing them on a regular basis, see your doctor.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-3" type="button" data-bs-toggle="collapse">
+                      Exercise and heart rate
+                    </button>
+                  </h2>
+                  <div id="faqsThree-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+                    <div class="accordion-body">
+                      Like any other muscle, your heart needs exercise to keep it fit and healthy. Regular exercise can help reduce your risk of heart disease and other health conditions, such as diabetes.<br>
+
+To keep your heart healthy, you should aim to do 150 minutes of low to moderate intensity exercise a week. If you have a heart condition, talk to your doctor about what exercise and target heart rates are safe for you.<br>
+
+One way to measure the intensity of your exercise is by using your heart rate. To exercise at a low to moderate intensity your heart rate should be at 50 to 70% of your approximate maximum heart rate.<br>
+
+The easiest way to get an approximate maximum heart rate (MHR) is to calculate 220 – your age. You then need to calculate 50 to 70% of your MHR.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" data-bs-target="#faqsThree-4" type="button" data-bs-toggle="collapse">
+                      Heart rate zones chart
+                    </button>
+                  </h2>
+                  <div id="faqsThree-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-3">
+                    <div class="accordion-body">
+                      Age (years)	Target heart rate zone (bpm)	Maximum heart rate (bpm)<br>
+                      20	        100 to 170	                   200<br>
+30	95 to 162	190<br>
+35	93 to 157	185<br>
+45	88 to 149	175<br>
+50	85 to 145	170<br>
+55	83 to 140	165<br>
+60	80 to 136	160<br>
+65	78 to 132	155<br>
+70	75 to 128	150<br>
+                    </div>
+                  </div>
+                </div>
+
+                
+                </div>
+
+              </div>
+
+            </div>
+          </div><!-- End F.A.Q Group 3 -->
+
+        </div>
+
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer" class="footer">
+    <div class="copyright">
+      &copy; Copyright <strong><span>BK Smart Health</span></strong>. All Rights Reserved
+    </div>
+    <div class="credits">
+      
+      We <a href="#">Got you covered</a>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/apexcharts/apexcharts.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/chart.js/chart.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/echarts/echarts.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/quill/quill.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/simple-datatables/simple-datatables.js' %}"></script>
+  <script src="{% static 'assets/vendor/tinymce/tinymce.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+
+</body>
+
+</html>
