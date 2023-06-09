@@ -139,4 +139,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'blssngkondo@gmail.com.com'
 EMAIL_HOST_PASSWORD = 'chiedzashenjere'
-DEFAULT_FROM_EMAIL = 'blssngkondp@mail.com'
+DEFAULT_FROM_EMAIL = 'blssngkondo@gmail.com'
