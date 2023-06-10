@@ -378,42 +378,20 @@
                     </div>
                     <div class="ps-3">
                       {% block content %}
-                      <h1>ECG Data</h1>
+                      <h1>Read Data</h1>
                       
-                      {% if chart_data %}
-                        <canvas id="myChart"></canvas>
-                      
-                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                        <script>
-                          var ctx = document.getElementById('myChart').getContext('2d');
-                          var chart = new Chart(ctx, {
-                              type: 'line',
-                              data: {
-                                  labels: {{ chart_data.labels|safe }},
-                                  datasets: [{
-                                      label: 'ECG Data',
-                                      data: {{ chart_data.data|safe }},
-                                      borderColor: 'rgba(255, 99, 132, 1)',
-                                      borderWidth: 1
-                                  }]
-                              },
-                              options: {
-                                  scales: {
-                                      yAxes: [{
-                                          ticks: {
-                                              beginAtZero: true
-                                          }
-                                      }]
-                                  }
-                              }
-                          });
-                        </script>
+                      {% if ecg_data %}
+                        <h2>ECG Data</h2>
+                        <div class="card">
+                          <div class="card-body">
+                            <h5 class="card-title">ECG Chart</h5>
+                            <img src="data:image/png;base64,{{ chart_data }}" alt="ECG Chart">
+                          </div>
+                        </div>
                       {% else %}
-                        <p>No data to display.</p>
+                        <p>No ECG data to display.</p>
                       {% endif %}
                     {% endblock %}
-                      
-
                     </div>
                   </div>
                 </div>

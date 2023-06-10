@@ -20,27 +20,34 @@ from django.forms import ModelChoiceField
 from smarthealth.models import MedicalRecord
 from smarthealth.forms import MedicalRecordForm
 from .forms import ContactForm
-
+import matplotlib.pyplot as plt
+from django.shortcuts import get_object_or_404
+import base64
+from io import BytesIO
+from django.urls import reverse
+from django.http import JsonResponse, HttpResponseBadRequest, HttpResponse
+from django.views.decorators.csrf import csrf_exempt
 
 
 # Create your views here.
 def login(request):
-    if request.method == 'POST':
+     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
         
-        user = auth.authenticate(username=username,password=password)
+        user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
-            return redirect('home')
-        else: 
-            messages.info(request, 'invalid credentials')
+            if user.is_superuser:
+                return redirect(reverse('admin:index'))
+            else:
+                return redirect('home')
+        else:
+            messages.info(request, 'Invalid credentials')
             return redirect('index')
-    else: 
-        
-        
-        return render(request,'index.html')
-
+     else:
+        return render(request, 'index.html')
+    
 def register(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -282,12 +289,12 @@ def read(request):
             stopbits=serial.STOPBITS_ONE,
             timeout=5)
          
-         time.sleep(2)
+         time.sleep(4)
          ser.write(command.encode('utf-8'))
          
          new_values = ""
          
-         time.sleep(3)
+         time.sleep(4)
          
          while ser.in_waiting:
             data = ser.readline()
@@ -307,13 +314,24 @@ def read(request):
             records= MedicalRecord.objects.create(user=request.user, patient=patient, bpm=new_values)
             records.save()
          elif command == '3':
-            records= MedicalRecord.objects.create(user=request.user, patient=patient, ecg=new_values)
+    # Extract numeric values from new_values using regex
+            numbers = re.findall(r'\d+', new_values)
+            ecg_data = [int(n) for n in numbers]
+    
+    # Create MedicalRecord object using ecg_data
+            records = MedicalRecord.objects.create(user=request.user, patient=patient, ecg=ecg_data)
             records.save()
-            
-            data = [int(x) for x in new_values.split(',')]
-            chart_data = {'labels': list(range(len(data))), 'data': data}
-            context = {'chart_data': chart_data}
-            
+    
+    # Generate chart data using ecg_data
+            x_values = list(range(len(ecg_data)))
+            y_values = ecg_data
+    
+    # Plot the chart
+            plt.plot(x_values, y_values)
+            plt.title('ECG Data')
+            plt.xlabel('Time (s)')
+            plt.ylabel('Voltage (mV)')
+            plt.show()
          elif command == '4':
             records= MedicalRecord.objects.create(user=request.user, patient=patient, spirometry=new_values)
             records.save()
@@ -418,32 +436,28 @@ def spirometry(request):
       
     return render(request, 'spirometry.html', context)
 
+@csrf_exempt
 def contact(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            message = form.cleaned_data['message']
-            subject = 'Message from your website'
-            
-            # Send email using send_mail function
-            try:
-                send_mail(
-                    subject,
-                    f"Name: {name}\nEmail: {email}\n\nMessage: {message}",
-                    settings.DEFAULT_FROM_EMAIL,
-                    [settings.DEFAULT_FROM_EMAIL],
-                    fail_silently=False,
-                )
-                return JsonResponse({'success': True})
-            except:
-                return JsonResponse({'success': False})
-        else:
-            return JsonResponse({'success': False, 'errors': form.errors})
-    else:
-        form = ContactForm()
-    return render(request, 'contact.html', {'form': form})
+   if request.method == 'POST':
+        name = request.POST.get('name', '')
+        email = request.POST.get('email', '')
+        subject = request.POST.get('subject', '')
+        message = request.POST.get('message', '')
+
+        # Send an email to the site owner with the form details
+        send_mail(
+            'New contact form submission: {}'.format(subject),
+            'Name: {}\nEmail: {}\nMessage: {}'.format(name, email, message),
+            email, # From email address
+            ['siteowner@example.com'], # To email address
+            fail_silently=False,
+        )
+
+        # Return a success message
+        return HttpResponse('Thank you for your message!')
+
+    # Render the contact form template
+   return render(request, 'contact.html')
 
 def doctors(request, ):
     doctor = get_object_or_404(Doctor)
@@ -460,3 +474,27 @@ def doctors(request, ):
     else:
         form = ContactForm(initial={'message': "Dear Dr. {},\n\n".format(doctor.name)})
     return render(request, 'doctors.html', {'form': form})
+
+
+
+def chart_image(request, record_id):
+    # Retrieve the MedicalRecord object
+    record = get_object_or_404(MedicalRecord, id=record_id)
+    
+    # Generate the chart using matplotlib
+    plt.plot(record.ecg)
+    plt.title('ECG Data')
+    plt.xlabel('Time (s)')
+    plt.ylabel('Voltage (mV)')
+    
+    # Save the chart to a PNG image in memory
+    buffer = BytesIO()
+    plt.savefig(buffer, format='png')
+    buffer.seek(0)
+    
+    # Encode the image as a base64-encoded PNG data URI
+    image_data = base64.b64encode(buffer.getvalue()).decode('utf-8')
+    chart_data = f'data:image/png;base64,{image_data}'
+    
+    # Return the chart data as a response
+    return HttpResponse(chart_data)

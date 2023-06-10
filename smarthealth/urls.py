@@ -16,5 +16,6 @@ urlpatterns = [
    path("contact", views.contact, name="contact"),
    path("doctors", views.doctors, name="doctors"),
    path('doctors/<int:doctor_id>/contact/', views.doctors, name='doctor_contact'),
+   path('chart_image/<int:record_id>/', views.chart_image, name='chart_image'),
     
 ]
